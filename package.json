@@ -1,7 +1,7 @@
 {
   "name": "autoconf",
   "version": "1.2.0",
-  "description": "Utility to assist with zero-configuration of IoT devices via MQTT",
+  "description": "Utility to assist with autoconfiguration of IoT devices via MQTT",
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=testing LOG_LEVEL=DEBUG nyc --reporter=text -x \"config/*\" -x \"test/*\" mocha --recursive --exit",
