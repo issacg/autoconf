@@ -67,22 +67,9 @@ For more detailed information about how to set parameters, see the  [rc](https:/
 
 In order to promote extensibility, mqtt-autoconf uses drivers to abstract detection of end-user devices and to read the configurations to be pushed to detected devices.  Each driver has its own configuration options which are documented below.
 
-#### FileDB
-
-The FileDB driver expects all device configurations (and an optional global configuration) to be included in a single JSON formatted file.  This is the default-configured database driver.
-
-If there is a section called `GLOBAL` (by default - see the `global` configuration option below), that will be added to the configuration to be returned to all devices [IFF](https://simple.wikipedia.org/wiki/If_and_only_if) a device-specific configuration is also found.
-
-The JSON file will be read once on startup, and currently needs a full restart to pick up changes.
-
-| Parameter | Default Value | Description |
-|-----------|---------------|-------------|
-| dbpath | `../db` | (**Required**) Path of the JSON file to read |
-| global | `GLOBAL` | (_Optional_) Name of section to treat as global configuration |
-
 #### PathDB
 
-The PathDB driver takes a root path on the filesystem and expects a single file for each device.  The filename should be the name of the detected device, and the filename should end with the extension `.json`
+The PathDB driver takes a root path on the filesystem and expects a single file for each device.  The filename should be the name of the detected device, and the filename should end with the extension `.json`.  This is the default-configured database driver.
 
 If there is a file called `GLOBAL.json` (by default - see the `global` configuration option below), that will be added to the configuration to be returned to all devices [IFF](https://simple.wikipedia.org/wiki/If_and_only_if) a device-specific configuration is also found.
 
@@ -92,6 +79,19 @@ The JSON files will be read at run-time, except for the global configuration whi
 |-----------|---------------|-------------|
 | dbpath | `../db` | (**Required**) Path to a folder on the filesystem containing all configuration files |
 | global | `GLOBAL` | (_Optional_) Name of file to treat as global configuration (without the `.json` extension) |
+
+#### FileDB
+
+The FileDB driver expects all device configurations (and an optional global configuration) to be included in a single JSON formatted file.
+
+If there is a section called `GLOBAL` (by default - see the `global` configuration option below), that will be added to the configuration to be returned to all devices [IFF](https://simple.wikipedia.org/wiki/If_and_only_if) a device-specific configuration is also found.
+
+The JSON file will be read once on startup, and currently needs a full restart to pick up changes.
+
+| Parameter | Default Value | Description |
+|-----------|---------------|-------------|
+| dbpath | `../db` | (**Required**) Path of the JSON file to read |
+| global | `GLOBAL` | (_Optional_) Name of section to treat as global configuration |
 
 #### TasmotaClientInfo 
 
