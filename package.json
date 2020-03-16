@@ -1,7 +1,7 @@
 {
   "name": "autoconf",
   "version": "1.2.0",
-  "description": "Utility to assist with zero-configuration of IoT devices via MQTT",
+  "description": "Utility to assist with autoconfiguration of IoT devices via MQTT",
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=testing LOG_LEVEL=DEBUG nyc --reporter=text -x \"config/*\" -x \"test/*\" mocha --recursive --exit",
@@ -21,6 +21,7 @@
     "eslint": "^6.6.0",
     "lolex": "^5.1.1",
     "mocha": "^6.2.2",
+    "mocha-junit-reporter": "^1.23.3",
     "mqtt-connection": "^4.0.0",
     "nyc": "^14.1.1",
     "sinon": "^7.5.0",
