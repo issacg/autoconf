@@ -5,6 +5,10 @@
 
 trigger:
 - master
+pr:
+  branches:
+    include:
+      - master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -18,17 +22,17 @@ steps:
 - script: NODE_ENV=development npm install
   displayName: 'npm install'
 
-- script: npx cross-env NODE_ENV=testing LOG_LEVEL=DEBUG nyc --reporter=text -x \"config/*\" -x \"test/*\" mocha --recursive --exit --reporter mocha-junit-reporter
+- script: npx cross-env NODE_ENV=testing LOG_LEVEL=DEBUG nyc --reporter=cobertura -x \"config/*\" -x \"test/*\" mocha --recursive --exit --reporter mocha-junit-reporter
   displayName: 'run tests'
 
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
     testRunner: JUnit
-    testResultsFiles: '**/TEST-RESULTS.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
 
 - task: PublishCodeCoverageResults@1
   inputs: 
     codeCoverageTool: Cobertura
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
