@@ -99,6 +99,12 @@ The TasmotaClientInfo driver is designed to work with devices with [Tasmota](htt
 
 This driver doesn't accept any additional configuration parameters.
 
+#### VersionedTasmotaClientInfo 
+
+The VersionedTasmotaClientInfo driver is identical to the TasmotaClientInfo except that the firmware version is also detected.
+
+This driver doesn't accept any additional configuration parameters.
+
 ## Rationale
 
 MQTT has been accepted as a popular protocol within the IoT system.  However many popular firmwares require devices to either be configured via custom firmware builds, an embedded insecure webserver on-board the device, proprietary - and often commercial - remote configuration management, or a combination of the above.
