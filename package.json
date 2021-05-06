@@ -10,7 +10,7 @@
   "author": "Issac Goldstand <margol@beamartyr.net>",
   "license": "Apache-2.0",
   "dependencies": {
-    "aedes": "^0.39.0",
+    "aedes": "^0.42.1",
     "debug": "^3.1.0",
     "eyes": "^0.1.8",
     "rc": "^1.2.8"
